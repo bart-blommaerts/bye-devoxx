@@ -1,0 +1,11 @@
+aws:
+  xray.enabled: true
+
+server:
+  port: 8090
+
+com:
+  amazonaws:
+    xray:
+      emitters:
+        daemonAddress: localhost:2000

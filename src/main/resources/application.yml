@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: bye-devoxx
+
+aws:
+  xray.enabled: true
+
+com:
+  amazonaws:
+    xray:
+      emitters:
+        daemonAddress: xray-service.default:2000

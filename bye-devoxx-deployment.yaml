@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bye-devoxx-deployment
+  labels:
+    app: bye-devoxx-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bye-devoxx-app
+  template:
+    metadata:
+      labels:
+        app: bye-devoxx-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+      containers:
+      - name: bye-devoxx
+        image: 836964591189.dkr.ecr.eu-west-3.amazonaws.com/bye-devoxx:sqs
+        env:
+          - name: AWS_XRAY_DAEMON_ADDRESS
+            value: "xray-service.default:2000"
+          - name: AWS_XRAY_ENABLED
+            value: "true"
+        ports:
+        - name: http
+          containerPort: 8080
+        imagePullPolicy: IfNotPresent
+      nodeSelector:
+        kubernetes.io/os: linux

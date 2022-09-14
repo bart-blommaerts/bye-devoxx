@@ -1,4 +1,4 @@
-package be.bbconsulting.hellodevoxx.xray;
+package be.bbconsulting.byedevoxx.xray;
 
 import com.amazonaws.xray.spring.aop.BaseAbstractXRayInterceptor;
 import org.aspectj.lang.annotation.Aspect;

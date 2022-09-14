@@ -1,4 +1,4 @@
-package be.bbconsulting.hellodevoxx.config;
+package be.bbconsulting.byedevoxx.config;
 
 import com.amazonaws.xray.AWSXRay;
 import com.amazonaws.xray.AWSXRayRecorderBuilder;
